@@ -4,6 +4,8 @@ Crypto inheritance on NEAR. If you die or vanish, your ETH (and BTC address) goe
 
 Built for the NEAR Hackathon, Open Innovation track.
 
+Contract on testnet: [`zeltter-59dbbe.testnet`](https://testnet.nearblocks.io/address/zeltter-59dbbe.testnet)
+
 ## How it works
 
 One NEAR contract controls an Ethereum address and a Bitcoin address for every owner, using NEAR Chain Signatures. You never hold a private key for those addresses. The contract asks the NEAR MPC network to sign, and only does so when the rules allow it.
@@ -60,6 +62,14 @@ Timers can be set in minutes, so the full flow takes about 10 minutes:
 3. Wait 2 minutes without pinging. Guardians see APPROVE RELEASE.
 4. Once enough guardians approve, the owner can cancel (try it), or let the 2 minutes pass.
 5. Heirs click CLAIM ETH and get their share on Sepolia.
+
+## Test it without a browser
+
+```bash
+node scripts/e2e.mjs zeltter-59dbbe.testnet
+```
+
+Makes fresh faucet accounts (owner, 2 guardians, 1 heir) and runs the whole thing with 60 second timers: owner signs an ETH tx, guardians try too early and get rejected, owner goes quiet, guardians approve, heir tries during the waiting period and gets rejected, owner tries to cancel too late and gets rejected, heir claims. Each MPC signature is checked to recover to the vault address. Takes about 3 minutes.
 
 ## Run it
 
