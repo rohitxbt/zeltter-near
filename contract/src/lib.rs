@@ -21,7 +21,6 @@ use near_sdk::serde_json::{self, json, Value};
 use near_sdk::store::LookupMap;
 use near_sdk::{
     env, log, near, require, AccountId, BorshStorageKey, Gas, NearToken, PanicOnDefault, Promise,
-    PromiseResult,
 };
 
 /// Covers storage for one plan (bounded by MAX_GUARDIANS / MAX_HEIRS).
@@ -67,6 +66,27 @@ pub struct Release {
     pub eth_balance_wei: U128,
 }
 
+/// What the MPC signer returns for secp256k1 (the "scheme" tag is ignored).
+#[near(serializers = [borsh, json])]
+#[derive(Clone)]
+pub struct AffinePoint {
+    pub affine_point: String,
+}
+
+#[near(serializers = [borsh, json])]
+#[derive(Clone)]
+pub struct Scalar {
+    pub scalar: String,
+}
+
+#[near(serializers = [borsh, json])]
+#[derive(Clone)]
+pub struct MpcSignature {
+    pub big_r: AffinePoint,
+    pub s: Scalar,
+    pub recovery_id: u8,
+}
+
 #[near(serializers = [borsh, json])]
 #[derive(Clone)]
 pub struct EthClaim {
@@ -78,8 +98,8 @@ pub struct EthClaim {
     pub gas_limit: u64,
     /// Hash that was sent to the MPC signer, hex.
     pub payload: String,
-    /// Raw MPC signature response. Anyone can read it and broadcast the tx.
-    pub signature: Option<Value>,
+    /// MPC signature. Anyone can read it and broadcast the tx.
+    pub signature: Option<MpcSignature>,
 }
 
 #[near(serializers = [borsh, json])]
@@ -462,12 +482,12 @@ impl Contract {
     // ------------------------------------------------------------ callbacks
 
     #[private]
-    pub fn on_signed(&self) -> Value {
+    pub fn on_signed(&self) -> MpcSignature {
         signature_result()
     }
 
     #[private]
-    pub fn on_claim_signed(&mut self, owner: AccountId, heir: AccountId, payload: String) -> Value {
+    pub fn on_claim_signed(&mut self, owner: AccountId, heir: AccountId, payload: String) -> MpcSignature {
         let sig = signature_result();
         if let Some(p) = self.plans.get_mut(&owner) {
             if let Some(c) = p.eth_claims.iter_mut().find(|c| c.heir == heir && c.payload == payload) {
@@ -556,13 +576,10 @@ fn btc_path(owner: &AccountId) -> String {
     format!("{}/btc", owner)
 }
 
-fn signature_result() -> Value {
-    match env::promise_result(0) {
-        PromiseResult::Successful(bytes) => {
-            serde_json::from_slice(&bytes).unwrap_or_else(|_| env::panic_str("bad signer response"))
-        }
-        _ => env::panic_str("signing failed"),
-    }
+fn signature_result() -> MpcSignature {
+    let bytes = env::promise_result_checked(0, 1024)
+        .unwrap_or_else(|_| env::panic_str("signing failed"));
+    serde_json::from_slice(&bytes).unwrap_or_else(|_| env::panic_str("bad signer response"))
 }
 
 #[cfg(test)]

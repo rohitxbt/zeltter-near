@@ -284,3 +284,12 @@ fn guardians_and_heirs_can_find_the_plan() {
     assert!(c.get_plans_for(acc("g2.testnet")).is_empty());
     assert_eq!(c.get_plans_for(acc("g9.testnet")), vec![acc("owner.testnet")]);
 }
+
+#[test]
+fn parses_mpc_signature_response() {
+    let raw = r#"{"scheme":"Secp256k1","big_r":{"affine_point":"02aa"},"s":{"scalar":"bb"},"recovery_id":1}"#;
+    let sig: MpcSignature = near_sdk::serde_json::from_str(raw).unwrap();
+    assert_eq!(sig.big_r.affine_point, "02aa");
+    assert_eq!(sig.s.scalar, "bb");
+    assert_eq!(sig.recovery_id, 1);
+}
