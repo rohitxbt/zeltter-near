@@ -209,7 +209,8 @@ fn heir_claim_goes_to_their_address_with_their_share() {
     .signing_hash();
     assert_eq!(claim.payload, hex::encode(expected));
 
-    // re-sign with the same nonce replaces, does not add
+    // re-sign with the same nonce (a new transaction) replaces, does not add
+    ctx("h1.testnet", t + 10, ONE_YOCTO);
     let _ = c.claim_eth(acc("owner.testnet"), tx(4));
     assert_eq!(c.get_plan(acc("owner.testnet")).unwrap().plan.eth_claims.len(), 1);
 }
