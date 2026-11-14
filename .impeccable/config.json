@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "material symbols outlined",
+        "createdAt": "2026-11-14T03:02:54.472Z",
+        "reason": "Claude: icon font (the app's icon library, recorded under icons in DESIGN.md), not a text face"
+      }
+    ]
+  }
+}
