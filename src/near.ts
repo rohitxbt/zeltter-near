@@ -2,7 +2,7 @@ import { NearConnector } from "@hot-labs/near-connect";
 
 export const CONTRACT_ID = process.env.REACT_APP_CONTRACT_ID || "zeltter-59dbbe.testnet";
 export const MPC_ID = "v1.signer-prod.testnet";
-const RPC = "https://rpc.testnet.near.org";
+const RPC = "https://test.rpc.fastnear.com";
 
 export const connector = new NearConnector({ network: "testnet" });
 

@@ -30,4 +30,6 @@ yarn-error.log*
 /contract/neardev
 
 # local tool caches
-.impeccable/
+.impeccable/review/
+.impeccable/hook.cache.json
+.impeccable/*.local.json

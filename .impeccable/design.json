@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T00:00:00Z",
+  "title": "Design System: Zeltter",
+  "extensions": {
+    "colorMeta": {
+      "field": { "role": "primary", "displayName": "Brick Field Red", "canonical": "#b8312a", "tonalRamp": ["#3d0f0c", "#5e1814", "#8f231d", "#b8312a", "#d2564d", "#e5867f", "#f2bab5", "#fbe6e4"] },
+      "ground": { "role": "neutral", "displayName": "Warm Cream Ground", "canonical": "#f3ece6", "tonalRamp": ["#3a332d", "#5e544b", "#857a70", "#ab9f95", "#cfc4ba", "#e6ddd5", "#f3ece6", "#fbf8f5"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#fefaf2", "tonalRamp": ["#4a4337", "#70685a", "#978e7f", "#bdb4a5", "#ddd5c8", "#f1ebe0", "#fefaf2", "#fffdf9"] },
+      "ink": { "role": "neutral", "displayName": "Near-Black Ink", "canonical": "#1f1f1f", "tonalRamp": ["#0f0f0f", "#1f1f1f", "#383838", "#575757", "#7a7a7a", "#a3a3a3", "#d1d1d1", "#f0f0f0"] },
+      "muted": { "role": "neutral", "displayName": "Quiet Grey", "canonical": "#575757", "tonalRamp": ["#0f0f0f", "#1f1f1f", "#383838", "#575757", "#7a7a7a", "#a3a3a3", "#d1d1d1", "#f0f0f0"] },
+      "on-field": { "role": "neutral", "displayName": "Cream on Red", "canonical": "#fbeee6", "tonalRamp": ["#4d3a30", "#735a4c", "#9a7c6b", "#bf9f8d", "#dcc2b3", "#efdcd1", "#fbeee6", "#fef8f4"] },
+      "on-field-muted": { "role": "neutral", "displayName": "Blush on Red", "canonical": "#f9e2d9", "tonalRamp": ["#4d342b", "#735146", "#9a7164", "#bf9384", "#dbb6a8", "#eecdc1", "#f9e2d9", "#fdf3ef"] },
+      "ok": { "role": "tertiary", "displayName": "Moss", "canonical": "#2f6b3a", "tonalRamp": ["#12301a", "#1d4826", "#2f6b3a", "#3f8a4d", "#63a871", "#94c79e", "#c5e2ca", "#ecf6ee"] },
+      "warn": { "role": "tertiary", "displayName": "Amber Ochre", "canonical": "#8a5300", "tonalRamp": ["#331f00", "#5c3800", "#8a5300", "#b06d0a", "#d1913a", "#e6b878", "#f3dbb6", "#fbf1e2"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(31, 31, 31, 0.12)" },
+      "line-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "rgba(31, 31, 31, 0.24)" },
+      "on-field-line": { "role": "neutral", "displayName": "Field Hairline", "canonical": "rgba(251, 238, 230, 0.28)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Landing hero headline only, two colours (ink then muted), max 16ch." },
+      "clock": { "displayName": "Clock", "purpose": "The countdown at the top of the red field; tabular." },
+      "headline": { "displayName": "Headline", "purpose": "Page title of each app view." },
+      "title": { "displayName": "Title", "purpose": "Section titles, wordmark, busy-overlay message." },
+      "lead": { "displayName": "Lead", "purpose": "Landing sentence and the setup field's plain-language summary." },
+      "body": { "displayName": "Body", "purpose": "Default UI and reading text; buttons at weight 500." },
+      "label": { "displayName": "Label", "purpose": "Field labels and small text actions." },
+      "hint": { "displayName": "Hint", "purpose": "Field hints, phase labels, network pill." }
+    },
+    "shadows": [
+      { "name": "link-card-rest", "value": "0 1px 2px rgba(31,31,31,0.06), 0 8px 24px -12px rgba(31,31,31,0.18)", "purpose": "Floating paper link card at rest." },
+      { "name": "link-card-hover", "value": "0 1px 2px rgba(31,31,31,0.08), 0 12px 28px -12px rgba(31,31,31,0.28)", "purpose": "Link card on hover." },
+      { "name": "toast", "value": "0 2px 4px rgba(31,31,31,0.06), 0 16px 40px -16px rgba(31,31,31,0.35)", "purpose": "Bottom-right toast." },
+      { "name": "focus-ring", "value": "0 0 0 3px rgba(31,31,31,0.1)", "purpose": "Input focus, paired with an ink stroke." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "House easing for buttons, the line draw and the heartbeat pulse." },
+      { "name": "button", "value": "160ms", "purpose": "Button colour, stroke and press (scale 0.98)." },
+      { "name": "field", "value": "140ms", "purpose": "Input stroke and focus ring." },
+      { "name": "toast", "value": "300ms", "purpose": "Toast fade and 16px rise." },
+      { "name": "trace", "value": "1.4s ease-out-expo, once", "purpose": "Heartbeat line draws itself in." },
+      { "name": "beat", "value": "1.6s ease-out-expo, infinite; scale 1 to 2.6, opacity 0.55 to 0", "purpose": "The live now-point pulse; the one ambient motion." },
+      { "name": "spinner", "value": "0.8s linear, infinite", "purpose": "Ink loading ring." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Stops beat, trace and spinner; removes button transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Primary action on the cream ground.",
+      "html": "<button class=\"ds-btn ds-btn-ink\">Set up a vault</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 9999px; font-family: 'Stack Sans Text', system-ui, sans-serif; font-size: 15px; font-weight: 500; white-space: nowrap; border: none; cursor: pointer; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), border-color 160ms, transform 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:active { transform: scale(0.98); } .ds-btn:focus-visible { outline: 2px solid #1f1f1f; outline-offset: 2px; } .ds-btn-ink { background: #1f1f1f; color: #fefaf2; } .ds-btn-ink:hover { background: #000; }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary action on cream; also the square remove-row button.",
+      "html": "<button class=\"ds-btn-line\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>Add guardian</button>",
+      "css": ".ds-btn-line { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 16px; border-radius: 9999px; font-family: 'Stack Sans Text', system-ui, sans-serif; font-size: 14px; font-weight: 500; color: #1f1f1f; background: transparent; border: 1px solid rgba(31,31,31,0.24); cursor: pointer; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), border-color 160ms, transform 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-line:hover { background: #fefaf2; border-color: #1f1f1f; } .ds-btn-line:active { transform: scale(0.98); } .ds-btn-line:focus-visible { outline: 2px solid #1f1f1f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Paper Button on Field",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "The one primary action inside the red field, beside an optional on-field outline secondary.",
+      "html": "<div class=\"ds-field-row\"><button class=\"ds-btn-paper\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z\"/></svg>I'm here, check in</button><button class=\"ds-btn-on-field\">Cancel the release</button></div>",
+      "css": ".ds-field-row { display: flex; flex-wrap: wrap; gap: 12px; padding: 32px; background: #b8312a; } .ds-btn-paper, .ds-btn-on-field { display: inline-flex; align-items: center; gap: 8px; height: 48px; border-radius: 9999px; font-family: 'Stack Sans Text', system-ui, sans-serif; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), border-color 160ms, transform 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-paper { padding: 0 28px; background: #fefaf2; color: #1f1f1f; border: none; } .ds-btn-paper:hover { background: #fff; } .ds-btn-on-field { padding: 0 24px; background: transparent; color: #fbeee6; border: 1px solid rgba(251,238,230,0.28); } .ds-btn-on-field:hover { border-color: #fbeee6; background: rgba(251,238,230,0.08); } .ds-btn-paper:active, .ds-btn-on-field:active { transform: scale(0.98); } .ds-btn-paper:focus-visible, .ds-btn-on-field:focus-visible { outline: 2px solid #fbeee6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper field with label and hint; red stroke when invalid.",
+      "html": "<div class=\"ds-fieldset\"><label class=\"ds-label\" for=\"ds-to\">To</label><input id=\"ds-to\" class=\"ds-input\" placeholder=\"0x…\"><p class=\"ds-hint\">Every heir needs a valid ETH address.</p></div>",
+      "css": ".ds-fieldset { font-family: 'Stack Sans Text', system-ui, sans-serif; color: #1f1f1f; max-width: 360px; } .ds-label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; } .ds-input { width: 100%; height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid rgba(31,31,31,0.24); background: #fefaf2; color: #1f1f1f; font: inherit; font-size: 15px; font-variant-numeric: tabular-nums; transition: border-color 140ms, box-shadow 140ms; } .ds-input:hover { border-color: rgba(31,31,31,0.4); } .ds-input:focus { outline: none; border-color: #1f1f1f; box-shadow: 0 0 0 3px rgba(31,31,31,0.1); } .ds-input[aria-invalid='true'] { border-color: #b8312a; } .ds-hint { font-size: 13px; color: #575757; margin: 6px 0 0; }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "network-pill",
+      "description": "Wordmark, centred underline tabs, network pill and account pill on cream with a hairline below.",
+      "html": "<header class=\"ds-bar\"><span class=\"ds-wordmark\">Zeltter</span><nav class=\"ds-tabs\"><button class=\"ds-tab\" aria-selected=\"true\">My vault</button><button class=\"ds-tab\">Edit</button><button class=\"ds-tab\">Inheriting</button></nav><span class=\"ds-net\"><span class=\"ds-dot\"></span>NEAR testnet</span></header>",
+      "css": ".ds-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; height: 64px; padding: 0 40px; gap: 24px; background: #f3ece6; border-bottom: 1px solid rgba(31,31,31,0.12); font-family: 'Stack Sans Text', system-ui, sans-serif; } .ds-wordmark { align-self: center; font-family: 'Stack Sans Headline', system-ui, sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; color: #1f1f1f; } .ds-tabs { display: flex; gap: 24px; } .ds-tab { background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; font: inherit; font-size: 15px; color: #575757; cursor: pointer; transition: color 160ms; } .ds-tab:hover { color: #1f1f1f; } .ds-tab[aria-selected='true'] { color: #1f1f1f; font-weight: 500; border-bottom-color: #1f1f1f; } .ds-tab:focus-visible { outline: 2px solid #1f1f1f; outline-offset: 2px; } .ds-net { justify-self: end; align-self: center; display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 9999px; border: 1px solid rgba(31,31,31,0.24); font-size: 13px; color: #575757; } .ds-dot { width: 6px; height: 6px; border-radius: 9999px; background: #2f6b3a; }"
+    },
+    {
+      "name": "On-chain Link Card",
+      "kind": "card",
+      "refersTo": "link-card",
+      "description": "The only resting card: floating paper link to the live contract.",
+      "html": "<a class=\"ds-link-card\" href=\"#\"><span><span class=\"ds-lc-title\">Read the rules on-chain</span><span class=\"ds-lc-sub\">zeltter-59dbbe.testnet</span></span><svg class=\"ds-lc-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M7 17 17 7M8 7h9v9\"/></svg></a>",
+      "css": ".ds-link-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 440px; padding: 16px 20px; border-radius: 16px; background: #fefaf2; color: #1f1f1f; text-decoration: none; font-family: 'Stack Sans Text', system-ui, sans-serif; box-shadow: 0 1px 2px rgba(31,31,31,0.06), 0 8px 24px -12px rgba(31,31,31,0.18); transition: box-shadow 160ms; } .ds-link-card:hover { box-shadow: 0 1px 2px rgba(31,31,31,0.08), 0 12px 28px -12px rgba(31,31,31,0.28); } .ds-link-card:focus-visible { outline: 2px solid #1f1f1f; outline-offset: 2px; } .ds-lc-title { display: block; font-weight: 500; font-size: 15px; } .ds-lc-sub { display: block; font-size: 14px; color: #575757; font-variant-numeric: tabular-nums; } .ds-lc-arrow { transition: transform 160ms cubic-bezier(0.16,1,0.3,1); } .ds-link-card:hover .ds-lc-arrow { transform: translate(2px,-2px); }"
+    },
+    {
+      "name": "Vault Clock",
+      "kind": "custom",
+      "refersTo": "field",
+      "description": "Signature: the red field's countdown, heartbeat line with live now-point, and phase labels.",
+      "html": "<div class=\"ds-clock\"><p class=\"ds-big\">66d 19h</p><p class=\"ds-cap\">until guardians can step in. Any check-in resets it.</p><svg viewBox=\"0 0 400 72\" class=\"ds-line\"><line x1=\"100\" x2=\"100\" y1=\"8\" y2=\"68\" stroke=\"currentColor\" stroke-opacity=\".28\"/><line x1=\"200\" x2=\"200\" y1=\"8\" y2=\"68\" stroke=\"currentColor\" stroke-opacity=\".28\"/><line x1=\"300\" x2=\"300\" y1=\"8\" y2=\"68\" stroke=\"currentColor\" stroke-opacity=\".28\"/><line x1=\"26\" x2=\"400\" y1=\"46\" y2=\"46\" stroke=\"currentColor\" stroke-opacity=\".32\" stroke-width=\"1.5\" stroke-dasharray=\"2 5\"/><path d=\"M0 46 L8 46 L11 24 L14 55 L17 46 L26 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle class=\"ds-beat\" cx=\"26\" cy=\"46\" r=\"5\" fill=\"currentColor\"/><circle cx=\"26\" cy=\"46\" r=\"5\" fill=\"currentColor\"/></svg><ol class=\"ds-phases\"><li class=\"ds-on\"><b>Heartbeat</b><span>90 days</span></li><li>Guardians approve<span>90 days</span></li><li>Waiting period<span>7 days</span></li><li>Released</li></ol></div>",
+      "css": ".ds-clock { background: #b8312a; color: #fbeee6; padding: 40px; font-family: 'Stack Sans Text', system-ui, sans-serif; } .ds-big { margin: 0; font-family: 'Stack Sans Headline', system-ui, sans-serif; font-weight: 600; font-size: clamp(3.25rem, 8vw, 6rem); line-height: 0.95; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; } .ds-cap { margin: 12px 0 32px; font-size: 15px; color: #f9e2d9; max-width: 36ch; } .ds-line { width: 100%; height: auto; overflow: visible; } .ds-beat { transform-box: fill-box; transform-origin: center; animation: ds-beat 1.6s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-beat { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(2.6); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-beat { animation: none; } } .ds-phases { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; padding: 0; margin: 12px 0 0; } .ds-phases li { padding-right: 8px; font-size: 13px; line-height: 1.375; color: #f9e2d9; } .ds-phases li.ds-on { color: #fbeee6; } .ds-phases b { font-weight: 600; } .ds-phases span { display: block; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Toast",
+      "kind": "custom",
+      "refersTo": "toast",
+      "description": "Bottom-right paper notification; error titles in field red.",
+      "html": "<div class=\"ds-toast\" role=\"status\"><p class=\"ds-t-title\">Checked in</p><p class=\"ds-t-msg\">Your heartbeat timer starts again.</p></div>",
+      "css": ".ds-toast { max-width: 380px; padding: 16px 20px; border-radius: 16px; background: #fefaf2; color: #1f1f1f; font-family: 'Stack Sans Text', system-ui, sans-serif; box-shadow: 0 2px 4px rgba(31,31,31,0.06), 0 16px 40px -16px rgba(31,31,31,0.35); } .ds-t-title { margin: 0; font-weight: 500; font-size: 15px; } .ds-t-msg { margin: 2px 0 0; font-size: 14px; color: #575757; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Vault Is a Clock",
+    "overview": "Every screen is a split: a quiet cream work column where the owner, guardian or heir reads and edits, and a committed deep-red field that holds the vault's timeline. The field is not decoration; it is the one thing every role needs to read first (how long, what phase, what can happen next), set as a very large tabular countdown above a heartbeat line that beats while the owner checks in, goes flat once they stop, and carries a live point for now.\n\nThe world is warm, quiet and print-like. Cream ground, near-black ink, a single grey for secondary voice, hairline rules instead of boxes, pill buttons, plain paper fields. Density is calm: one column of sections separated by rules, generous gutters, one primary action per field. It explicitly refuses the crypto-dashboard default of card grids, balance hero metrics and dark neon; no gradients and no glow.\n\nMotion is restrained to one authored gesture: the heartbeat. The line draws itself in, the now-point pulses, and nothing else on the page performs.",
+    "keyCharacteristics": [
+      "Split layout: cream work column left, full-height red field right (field stacks above the work on mobile for owner and watcher views).",
+      "Split-colour hero headline: ink, then the same sentence continuing in grey.",
+      "Huge tabular countdown as the field's anchor, never a balance.",
+      "Hairline rules (ink at 12%) carry all structure; paper surfaces are rare and flat.",
+      "Ink pill on cream, paper pill on red: one action per surface."
+    ],
+    "rules": [
+      { "name": "The One Field Rule", "body": "Red appears as one committed field per screen, holding the vault clock. Outside the field, red is only ever a signal (error, invalid, destructive, released); it is never a fill, badge or accent in the work column.", "section": "colors" },
+      { "name": "The One Grey Rule", "body": "Hierarchy in text comes from ink versus one grey (muted) and from weight, not from a ladder of greys or tinted text.", "section": "colors" },
+      { "name": "The Split Headline Rule", "body": "The persuasive hero headline is one sentence in two colours: the claim in ink, its consequence in muted grey. App page headlines stay single-colour ink.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "Every countdown, amount, percentage, address, account id and date is set in tabular numerals so values never jitter as the clock ticks.", "section": "typography" },
+      { "name": "The Clock-First Rule", "body": "Every app screen has a field, and every field holds the vault clock (real, preview or labelled example). No screen ships without the timeline.", "section": "layout" },
+      { "name": "The Hairline Rule", "body": "Structure is drawn with rules, not containers. Sections, list rows and address rows are separated by hairlines; no cards in cards.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do give every app screen the split, with the vault clock in the red field.",
+      "Do set every number, address and account id in tabular numerals.",
+      "Do keep one primary pill per surface: ink on cream, paper on red.",
+      "Do separate sections and rows with 12% ink hairlines and 32px section padding.",
+      "Do keep the heartbeat (line draw and now-point pulse) as the only ambient motion, and drop it under reduced motion.",
+      "Do label any synthetic clock as an example."
+    ],
+    "donts": [
+      "Don't use red in the work column except as an error, invalid, destructive or released signal.",
+      "Don't put cards in cards or lay out content as card grids.",
+      "Don't make a balance or portfolio total the hero number; the big numeral is time.",
+      "Don't use gradients, glows or dark neon surfaces.",
+      "Don't add more greys or tinted text tiers beyond ink and muted."
+    ]
+  }
+}
